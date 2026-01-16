@@ -16,6 +16,40 @@ const quickReplies = [
   'Schedule inspection',
 ];
 
+// Generate or retrieve user ID
+const getUserId = (): string => {
+  if (typeof window === 'undefined') return '';
+  let userId = localStorage.getItem('chatbot_user_id');
+  if (!userId) {
+    userId = `user_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+    localStorage.setItem('chatbot_user_id', userId);
+  }
+  return userId;
+};
+
+// Get UTM parameters from URL
+const getUtmParams = () => {
+  if (typeof window === 'undefined') return {};
+  const params = new URLSearchParams(window.location.search);
+  return {
+    utm_source: params.get('utm_source') || localStorage.getItem('utm_source') || null,
+    utm_medium: params.get('utm_medium') || localStorage.getItem('utm_medium') || null,
+    utm_campaign: params.get('utm_campaign') || localStorage.getItem('utm_campaign') || null,
+    utm_content: params.get('utm_content') || localStorage.getItem('utm_content') || null,
+    utm_term: params.get('utm_term') || localStorage.getItem('utm_term') || null,
+  };
+};
+
+// Store UTM params in localStorage for persistence
+const storeUtmParams = () => {
+  if (typeof window === 'undefined') return;
+  const params = new URLSearchParams(window.location.search);
+  ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'].forEach(key => {
+    const value = params.get(key);
+    if (value) localStorage.setItem(key, value);
+  });
+};
+
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
@@ -28,7 +62,17 @@ export default function ChatBot() {
   ]);
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
+  const [userId, setUserId] = useState<string>('');
+  const [conversationId, setConversationId] = useState<string>('');
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Initialize user tracking
+  useEffect(() => {
+    storeUtmParams();
+    const uid = getUserId();
+    setUserId(uid);
+    setConversationId(`conv_${uid}_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`);
+  }, []);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -54,12 +98,25 @@ export default function ChatBot() {
     setIsTyping(true);
 
     try {
+      const utmParams = getUtmParams();
+      const payload = {
+        message: messageText.trim(),
+        conversationId: conversationId,
+        userId: userId,
+        timestamp: new Date().toISOString(),
+        source: 'website',
+        page_url: typeof window !== 'undefined' ? window.location.href : null,
+        page_source: typeof window !== 'undefined' ? window.location.pathname : null,
+        referrer: typeof document !== 'undefined' ? document.referrer || null : null,
+        ...utmParams,
+      };
+
       const response = await fetch('https://dev-n8n.louislawgroup.com/webhook/restoroof-chatbot', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ message: messageText }),
+        body: JSON.stringify(payload),
       });
 
       const responseText = await response.text();
