@@ -38,47 +38,7 @@ export default function ChatBot() {
     scrollToBottom();
   }, [messages]);
 
-  const getBotResponse = (userMessage: string): string => {
-    const lowerMessage = userMessage.toLowerCase();
-
-    if (lowerMessage.includes('emergency') || lowerMessage.includes('tarp') || lowerMessage.includes('urgent')) {
-      return "I understand you need emergency help. Our crews are available 24/7. For immediate assistance, please call us at 1-800-555-ROOF. Would you like me to have someone call you back?";
-    }
-    if (lowerMessage.includes('estimate') || lowerMessage.includes('quote') || lowerMessage.includes('cost') || lowerMessage.includes('price')) {
-      return "We offer free estimates for all roofing services. I can help you schedule one. What type of service do you need? (Storm damage repair, leak repair, inspection, etc.)";
-    }
-    if (lowerMessage.includes('insurance') || lowerMessage.includes('claim')) {
-      return "We have extensive experience with insurance claims and can help you through the entire process. We'll document the damage, meet with adjusters, and ensure you get fair compensation. Would you like to schedule a free inspection?";
-    }
-    if (lowerMessage.includes('inspection') || lowerMessage.includes('schedule')) {
-      return "Great! I can help you schedule an inspection. Our storm damage inspections are free. What's the best day and time for you? You can also call us directly at 1-800-555-ROOF.";
-    }
-    if (lowerMessage.includes('leak') || lowerMessage.includes('water')) {
-      return "Roof leaks should be addressed quickly to prevent further damage. Is this an active leak right now? If so, I recommend calling our emergency line at 1-800-555-ROOF for immediate assistance.";
-    }
-    if (lowerMessage.includes('storm') || lowerMessage.includes('hurricane') || lowerMessage.includes('damage')) {
-      return "We specialize in storm damage restoration. Our team can inspect your roof, document the damage for insurance, and handle repairs. Would you like to schedule a free storm damage inspection?";
-    }
-    if (lowerMessage.includes('hours') || lowerMessage.includes('open')) {
-      return "Our office is open Monday-Friday 7am-7pm, Saturday 8am-5pm. However, our emergency crews are available 24/7 for urgent situations. How can I help you today?";
-    }
-    if (lowerMessage.includes('location') || lowerMessage.includes('area') || lowerMessage.includes('serve')) {
-      return "We serve all of Florida including Miami, Tampa, Orlando, Jacksonville, and Fort Lauderdale. What area are you located in?";
-    }
-    if (lowerMessage.includes('hello') || lowerMessage.includes('hi') || lowerMessage.includes('hey')) {
-      return "Hello! Thanks for reaching out. How can I help you with your roofing needs today?";
-    }
-    if (lowerMessage.includes('thank')) {
-      return "You're welcome! Is there anything else I can help you with?";
-    }
-    if (lowerMessage.includes('call') || lowerMessage.includes('phone') || lowerMessage.includes('talk')) {
-      return "You can reach us at 1-800-555-ROOF. We're available 24/7 for emergencies. Would you prefer to have someone call you back?";
-    }
-
-    return "Thanks for your message. For the fastest service, you can call us at 1-800-555-ROOF. Otherwise, let me know if you need help with emergency tarping, storm damage repair, leak repairs, or insurance claims.";
-  };
-
-  const handleSendMessage = (text?: string) => {
+  const handleSendMessage = async (text?: string) => {
     const messageText = text || inputValue.trim();
     if (!messageText) return;
 
@@ -93,17 +53,36 @@ export default function ChatBot() {
     setInputValue('');
     setIsTyping(true);
 
-    // Simulate bot typing delay
-    setTimeout(() => {
+    try {
+      const response = await fetch('https://dev-n8n.louislawgroup.com/webhook/chatbot', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: messageText }),
+      });
+
+      const data = await response.json();
+
       const botResponse: Message = {
         id: messages.length + 2,
-        text: getBotResponse(messageText),
+        text: data.response || data.message || data.output || "Thanks for your message. How can I help you today?",
         sender: 'bot',
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, botResponse]);
+    } catch (error) {
+      console.error('Chatbot error:', error);
+      const botResponse: Message = {
+        id: messages.length + 2,
+        text: "Sorry, I'm having trouble connecting right now. Please call us at 1-800-555-ROOF for immediate assistance.",
+        sender: 'bot',
+        timestamp: new Date(),
+      };
+      setMessages((prev) => [...prev, botResponse]);
+    } finally {
       setIsTyping(false);
-    }, 1000 + Math.random() * 1000);
+    }
   };
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
