@@ -62,11 +62,22 @@ export default function ChatBot() {
         body: JSON.stringify({ message: messageText }),
       });
 
-      const data = await response.json();
+      const responseText = await response.text();
+      let botText = "Thanks for your message. How can I help you today?";
+
+      if (responseText) {
+        try {
+          const data = JSON.parse(responseText);
+          botText = data.response || data.message || data.output || data.text || responseText;
+        } catch {
+          // Response is plain text, not JSON
+          botText = responseText;
+        }
+      }
 
       const botResponse: Message = {
         id: messages.length + 2,
-        text: data.response || data.message || data.output || "Thanks for your message. How can I help you today?",
+        text: botText,
         sender: 'bot',
         timestamp: new Date(),
       };
