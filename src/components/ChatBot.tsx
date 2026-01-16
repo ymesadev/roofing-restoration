@@ -54,7 +54,7 @@ export default function ChatBot() {
     setIsTyping(true);
 
     try {
-      const response = await fetch('https://dev-n8n.louislawgroup.com/webhook/chatbot', {
+      const response = await fetch('https://dev-n8n.louislawgroup.com/webhook/restoroof-chatbot', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
