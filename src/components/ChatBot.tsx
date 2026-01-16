@@ -123,12 +123,16 @@ export default function ChatBot() {
       let botText = "Thanks for your message. How can I help you today?";
 
       if (responseText) {
+        // Clean the response - remove leading '=' if present
+        const raw = responseText.trim();
+        const cleanRaw = raw.startsWith('=') ? raw.slice(1) : raw;
+
         try {
-          const data = JSON.parse(responseText);
-          botText = data.response || data.message || data.output || data.text || responseText;
+          const data = JSON.parse(cleanRaw);
+          botText = data.response || data.message || data.output || data.text || cleanRaw;
         } catch {
           // Response is plain text, not JSON
-          botText = responseText;
+          botText = cleanRaw;
         }
       }
 
