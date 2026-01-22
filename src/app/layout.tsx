@@ -3,7 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import ChatBot from "@/components/ChatBot";
+// import ChatBot from "@/components/ChatBot";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,7 +33,12 @@ export default function RootLayout({
         <Navigation />
         <main>{children}</main>
         <Footer />
-        <ChatBot />
+        {/* <ChatBot /> */}
+        <script
+          src="https://crm.llgai.app/chatbot-widget.js"
+          data-widget-id="2f2a3b8d-4a16-43c5-84da-66f701dd87c3"
+          async
+        />
       </body>
     </html>
   );
