@@ -99,26 +99,22 @@ export default function InspectionPage() {
               {
                 title: 'Storm Damage Inspection',
                 desc: 'After a storm, we inspect for hurricane, wind, or hail damage and provide documentation for insurance claims.',
-                price: 'FREE',
                 features: ['Complete damage assessment', 'Photo documentation', 'Insurance claim report', 'Repair recommendations'],
               },
               {
                 title: 'Pre-Purchase Inspection',
                 desc: 'Buying a home? Know the true condition of the roof before you close with our detailed inspection.',
-                price: 'Starting at $199',
                 features: ['Full condition assessment', 'Remaining life estimate', 'Repair cost estimates', 'Detailed written report'],
               },
               {
                 title: 'Maintenance Inspection',
                 desc: 'Regular inspections help catch small problems before they become expensive repairs.',
-                price: 'Starting at $149',
                 features: ['Annual condition check', 'Problem identification', 'Maintenance recommendations', 'Priority scheduling'],
               },
             ].map((type, i) => (
               <div key={i} className="bg-white rounded-xl p-6 shadow-sm">
                 <h3 className="text-xl font-semibold text-slate-900 mb-2">{type.title}</h3>
                 <p className="text-gray-600 text-sm mb-4">{type.desc}</p>
-                <div className="text-2xl font-bold text-orange-500 mb-4">{type.price}</div>
                 <ul className="space-y-2 mb-6">
                   {type.features.map((feature, j) => (
                     <li key={j} className="flex items-center gap-2 text-gray-600 text-sm">
@@ -133,7 +129,7 @@ export default function InspectionPage() {
                   href="/contact"
                   className="block text-center bg-slate-900 hover:bg-slate-800 text-white py-3 rounded-lg font-semibold transition"
                 >
-                  Schedule Now
+                  Request an Estimate
                 </Link>
               </div>
             ))}
