@@ -25,10 +25,10 @@ export default function RoofTarpingPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a
-                href="tel:1-800-555-ROOF"
+                href="tel:9542310508"
                 className="inline-flex items-center justify-center bg-orange-500 hover:bg-orange-600 text-white px-8 py-4 rounded-lg font-semibold text-lg transition"
               >
-                Call Now: 1-800-555-ROOF
+                Call Now: (954) 231-0508
               </a>
               <Link
                 href="/contact"
@@ -156,10 +156,10 @@ export default function RoofTarpingPage() {
             Every hour without protection can mean thousands in additional water damage. Call now for emergency tarping.
           </p>
           <a
-            href="tel:1-800-555-ROOF"
+            href="tel:9542310508"
             className="inline-flex items-center justify-center bg-white text-orange-600 px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition"
           >
-            Call 1-800-555-ROOF Now
+            Call (954) 231-0508 Now
           </a>
         </div>
       </section>

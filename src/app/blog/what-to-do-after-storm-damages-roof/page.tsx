@@ -168,10 +168,10 @@ export default function BlogPost() {
               Our emergency response team is available 24/7. Call now for immediate tarping and inspection services.
             </p>
             <a
-              href="tel:1-800-555-ROOF"
+              href="tel:9542310508"
               className="inline-flex items-center justify-center bg-orange-500 hover:bg-orange-600 text-white px-6 py-3 rounded-lg font-semibold transition"
             >
-              Call 1-800-555-ROOF
+              Call (954) 231-0508
             </a>
           </div>
 

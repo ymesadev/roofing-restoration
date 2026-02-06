@@ -137,10 +137,10 @@ export default function BlogPost() {
                 Schedule Inspection
               </Link>
               <a
-                href="tel:1-800-555-ROOF"
+                href="tel:9542310508"
                 className="inline-flex items-center justify-center border border-white/30 hover:border-white/50 text-white px-6 py-3 rounded-lg font-semibold transition"
               >
-                Call 1-800-555-ROOF
+                Call (954) 231-0508
               </a>
             </div>
           </div>

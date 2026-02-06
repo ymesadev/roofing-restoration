@@ -27,10 +27,10 @@ export default function LeakRepairPage() {
                 Schedule Repair
               </Link>
               <a
-                href="tel:1-800-555-ROOF"
+                href="tel:9542310508"
                 className="inline-flex items-center justify-center border-2 border-white/30 hover:border-white/50 text-white px-8 py-4 rounded-lg font-semibold text-lg transition"
               >
-                Call 1-800-555-ROOF
+                Call (954) 231-0508
               </a>
             </div>
           </div>
@@ -141,10 +141,10 @@ export default function LeakRepairPage() {
               Schedule Repair
             </Link>
             <a
-              href="tel:1-800-555-ROOF"
+              href="tel:9542310508"
               className="inline-flex items-center justify-center border-2 border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-orange-600 transition"
             >
-              Call 1-800-555-ROOF
+              Call (954) 231-0508
             </a>
           </div>
         </div>

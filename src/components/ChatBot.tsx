@@ -147,7 +147,7 @@ export default function ChatBot() {
       console.error('Chatbot error:', error);
       const botResponse: Message = {
         id: messages.length + 2,
-        text: "Sorry, I'm having trouble connecting right now. Please call us at 1-800-555-ROOF for immediate assistance.",
+        text: "Sorry, I'm having trouble connecting right now. Please call us at (954) 231-0508 for immediate assistance.",
         sender: 'bot',
         timestamp: new Date(),
       };
@@ -300,7 +300,7 @@ export default function ChatBot() {
             </button>
           </div>
           <p className="text-xs text-gray-400 text-center mt-2">
-            For emergencies, call <a href="tel:1-800-555-ROOF" className="text-orange-500 font-medium">1-800-555-ROOF</a>
+            For emergencies, call <a href="tel:9542310508" className="text-orange-500 font-medium">(954) 231-0508</a>
           </p>
         </div>
       </div>

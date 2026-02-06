@@ -150,31 +150,18 @@ export default function ContactPage() {
                   Roof emergency? Don&apos;t wait—call us now. Our crews are standing by around the clock.
                 </p>
                 <a
-                  href="tel:1-800-555-ROOF"
+                  href="tel:9542310508"
                   className="inline-flex items-center justify-center w-full bg-orange-500 hover:bg-orange-600 text-white px-6 py-4 rounded-lg font-semibold text-lg transition"
                 >
                   <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                   </svg>
-                  1-800-555-ROOF
+                  (954) 231-0508
                 </a>
               </div>
 
               <div className="space-y-6">
                 <h3 className="text-xl font-bold text-slate-900">Other Ways to Reach Us</h3>
-
-                <div className="flex gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-orange-100 text-orange-500 rounded-lg flex items-center justify-center">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-slate-900">Main Office</h4>
-                    <p className="text-gray-600">123 Restoration Way<br/>Tampa, FL 33601</p>
-                  </div>
-                </div>
 
                 <div className="flex gap-4">
                   <div className="flex-shrink-0 w-12 h-12 bg-orange-100 text-orange-500 rounded-lg flex items-center justify-center">
