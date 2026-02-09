@@ -123,7 +123,7 @@ export default function AboutPage() {
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { title: 'State Licensed', desc: 'Florida State Certified Roofing Contractor #CCC123456' },
+              { title: 'State Licensed', desc: 'Florida State Certified Roofing Contractor' },
               { title: 'Fully Insured', desc: 'General liability and workers\' compensation coverage' },
               { title: 'BBB Accredited', desc: 'A+ rating with the Better Business Bureau' },
               { title: 'Manufacturer Certified', desc: 'Certified installer for major roofing brands' },
