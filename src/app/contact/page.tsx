@@ -83,13 +83,16 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="address" className="block text-sm font-medium text-gray-700 mb-2">
-                    Property Address
+                  <label htmlFor="zipcode" className="block text-sm font-medium text-gray-700 mb-2">
+                    Zip Code
                   </label>
                   <input
                     type="text"
-                    id="address"
-                    name="address"
+                    id="zipcode"
+                    name="zipcode"
+                    inputMode="numeric"
+                    pattern="[0-9]{5}"
+                    maxLength={5}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 outline-none transition"
                   />
                 </div>
@@ -131,6 +134,18 @@ export default function ContactPage() {
                   />
                   <label htmlFor="emergency" className="text-sm text-gray-600">
                     This is an emergency requiring immediate attention
+                  </label>
+                </div>
+                <div className="flex items-start gap-3">
+                  <input
+                    type="checkbox"
+                    id="optin"
+                    name="optin"
+                    defaultChecked
+                    className="mt-1 h-4 w-4 text-orange-500 border-gray-300 rounded focus:ring-orange-500"
+                  />
+                  <label htmlFor="optin" className="text-sm text-gray-600">
+                    I agree to receive text messages and calls regarding my inquiry. Message and data rates may apply.
                   </label>
                 </div>
                 <button
