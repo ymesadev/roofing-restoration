@@ -36,7 +36,7 @@ export default function RootLayout({
         {/* <ChatBot /> */}
         <script
           src="https://crm.llgai.app/chatbot-widget.js"
-          data-widget-id="f20e62ca-fc2a-4a63-9f6b-82c558aab6c2"
+          data-widget-id="b6a77c31-eaa6-4ebc-850e-cc740596c0c0"
           async
         />
       </body>
